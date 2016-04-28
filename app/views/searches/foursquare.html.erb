@@ -12,9 +12,16 @@
   <% if @venues %>
     <ul>
     <% @venues.each do |venue| %>
+      <!-- <p>
+        <%= venue %>
+      </p> -->
       <li>
         <%= venue["name"] %><br>
         <%= venue["location"]["address"] %><br>
+        <!-- <%= venue["location"]["lat"] %><br>
+        <%= venue["location"]["lng"] %><br> -->
+        <%= venue["contact"]["formattedPhone"] %><br>
+        <iframe src= "https://maps.google.com/maps?q=<%= venue["location"]["lat"] %>,<%= venue["location"]["lng"] %>&hl=es;z=14&amp;output=embed"></iframe>
       </li>
     <% end %>
     </ul>
