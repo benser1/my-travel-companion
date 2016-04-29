@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'application#home'
+  devise_for :users
+  resources :welcome
+  root to: 'welcome#index'
 
   get '/foursquare', to: 'searches#foursquare'
   post '/foursquare', to: 'searches#foursquare'
