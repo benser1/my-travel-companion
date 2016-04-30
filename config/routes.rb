@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get '/flights', to: 'flights#flights'
   post '/flights', to: 'flights#flights'
 
+  get '/hotels', to: 'hotels#hotels'
+  post '/hotels', to: 'hotels#hotels'
+
 end
