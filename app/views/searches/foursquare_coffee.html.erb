@@ -2,7 +2,7 @@
 
 <h1>Search for Coffee Shops Near Me</h1>
 
-<%= form_tag '/foursquare' do %>
+<%= form_tag '/foursquare_coffee' do %>
   <%= label_tag :zipcode %>
   <%= text_field_tag :zipcode %>
   <%= submit_tag "Search!" %>
@@ -20,7 +20,7 @@
         <%= venue["location"]["address"] %><br>
         <!-- <%= venue["location"]["lat"] %><br>
         <%= venue["location"]["lng"] %><br> -->
-        <%= venue["contact"]["formattedPhone"] %><br>
+        Phone: <%= venue["contact"]["formattedPhone"] %><br>
         <iframe src= "https://maps.google.com/maps?q=<%= venue["location"]["lat"] %>,<%= venue["location"]["lng"] %>&hl=es;z=14&amp;output=embed"></iframe>
       </li>
     <% end %>
