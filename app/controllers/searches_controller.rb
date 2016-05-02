@@ -1,3 +1,5 @@
+
+
 class SearchesController < ApplicationController
 
   def foursquare_coffee
@@ -15,6 +17,7 @@ class SearchesController < ApplicationController
   end
 
   def foursquare_restaurants
+    # binding.pry
     @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
       # req.params['client_id'] = client_id
       # req.params['client_secret'] = client_secret

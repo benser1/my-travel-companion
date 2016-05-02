@@ -1,14 +1,15 @@
-<h1>Foursquare Page</h1>
 
-<h1>Search for Coffee Shops Near Me</h1>
+<div class="col-lg-4 col-sm-6 col-xs-12">
 
-<%= form_tag '/foursquare_coffee' do %>
-  <%= label_tag :zipcode %>
-  <%= text_field_tag :zipcode %>
-  <%= submit_tag "Search!" %>
-<% end %>
+  <h1>Foursquare Page</h1>
 
-<div>
+  <h1>Search for Coffee Shops Near Me</h1>
+
+  <%= form_tag '/foursquare_coffee' do %>
+    <%= label_tag :zipcode %>
+    <%= text_field_tag :zipcode %>
+    <%= submit_tag "Search!" %>
+  <% end %>
   <% if @venues %>
     <ul>
     <% @venues.each do |venue| %>
@@ -21,9 +22,10 @@
         <!-- <%= venue["location"]["lat"] %><br>
         <%= venue["location"]["lng"] %><br> -->
         Phone: <%= venue["contact"]["formattedPhone"] %><br>
-        <iframe src= "https://maps.google.com/maps?q=<%= venue["location"]["lat"] %>,<%= venue["location"]["lng"] %>&hl=es;z=14&amp;output=embed"></iframe>
       </li>
     <% end %>
     </ul>
   <% end %>
 </div>
+
+<div id="map" class="col-lg-8 col-sm-6 col-xs-12"></div>

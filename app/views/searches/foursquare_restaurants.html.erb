@@ -1,31 +1,35 @@
-<h1>Search for Restaurants</h1>
 
-<%= form_tag '/foursquare_restaurants' do %>
-<%= label_tag :zipcode %>
-<%= text_field_tag :zipcode %>
-<%= submit_tag "Search!" %>
-<% end %>
+<div class="col-lg-4 col-sm-6 col-xs-12">
+  <h1>Search for Restaurants</h1>
 
-<div>
-  <% if @venues %>
-  <ul>
-    <% @venues.each do |venue| %>
-    <!-- <p>
-    <%= venue %>
-  </p> -->
-  <li>
-    <%= venue["name"] %><br>
-    <%= venue["location"]["address"] %><br>
-    <% if venue["contact"]["formattedPhone"] %>
-      Phone: <%= venue["contact"]["formattedPhone"] %><br>
-    <% else %>
-      <p>
-        No Phone Number Available
-      </p>
-    <% end %>
-    <iframe src= "https://maps.google.com/maps?q=<%= venue["location"]["lat"] %>,<%= venue["location"]["lng"] %>&hl=es;z=14&amp;output=embed"></iframe>
-  </li>
+  <%= form_tag '/foursquare_restaurants' do %>
+  <%= label_tag :zipcode %>
+  <%= text_field_tag :zipcode %>
+  <%= submit_tag "Search!" %>
   <% end %>
-</ul>
-<% end %>
+
+  <div>
+    <% if @venues %>
+    <ul>
+      <% @venues.each do |venue| %>
+      <!-- <p>
+      <%= venue %>
+    </p> -->
+    <li>
+      <%= venue["name"] %><br>
+      <%= venue["location"]["address"] %><br>
+      <% if venue["contact"]["formattedPhone"] %>
+        Phone: <%= venue["contact"]["formattedPhone"] %><br>
+      <% else %>
+        <p>
+          No Phone Number Available
+        </p>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+  </div>
 </div>
+
+<div id="map" class="col-lg-8 col-sm-6 col-xs-12"></div>
