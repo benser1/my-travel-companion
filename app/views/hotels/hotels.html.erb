@@ -1,0 +1,31 @@
+<h1>Hotels Page</h1>
+
+<h1>Search for Hotels!</h1>
+
+<%= form_tag '/hotels' do %>
+  <%= label_tag :location %><br>
+  <%= text_field_tag :location %><br>
+  <%= label_tag :check_in %> (format "2016-06-14")<br>
+  <%= text_field_tag :check_in %><br>
+  <%= label_tag :check_out %> (format "2016-06-15")<br>
+  <%= text_field_tag :check_out %><br><br>
+  <%= submit_tag "Search!" %>
+<% end %>
+<br>
+<div>
+  <% if @hotels %>
+    <ul>
+    <% @hotels.each do |hotel| %>
+      <li>
+        Hotel: <%= hotel['property_name'] %><br>
+        Address: <%= hotel['address']['line1'] %>, <%= hotel['address']['city'] %>, <%= hotel['address']['region'] %>  <%= hotel['address']['postal_code'] %>
+        <br>
+        Check in: <%= hotel['rooms']['rates'.to_i]['rates']['start_date'.to_i]['start_date'] %><br>
+        Check out: <%= hotel['rooms']['rates'.to_i]['rates']['end_date'.to_i]['end_date'] %><br>
+        Total Price: $<%= hotel['total_price']['amount'] %><br>
+        Phone: <%= hotel['contacts']['detail'.to_i]['detail'] %><br>
+      </li><br>
+    <% end %>
+    </ul>
+  <% end %>
+</div>

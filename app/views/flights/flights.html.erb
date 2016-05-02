@@ -1,0 +1,29 @@
+<h1>Flights Page</h1>
+
+<h1>Search for Flights!</h1>
+
+<%= form_tag '/flights' do %>
+  <%= label_tag :origin %>
+  <%= text_field_tag :origin %>
+  <%= label_tag :destination %>
+  <%= text_field_tag :destination %>
+  <%= label_tag :departure_date %>
+  <%= text_field_tag :departure_date %>
+  <%= submit_tag "Search!" %>
+<% end %>
+
+<div>
+  <% if @flights %>
+    <ul>
+    <% @flights.each do |flight| %>
+      <li>
+        Origin: <%= flight["itineraries"]["outbound".to_i]["outbound"]["flights"]["origin".to_i]["origin"]["airport"] %><br>
+        Destination: <%= flight["itineraries"]["outbound".to_i]["outbound"]["flights"]["destination".to_i]["destination"]["airport"] %><br>
+        Departs: <%= flight["itineraries"]["outbound".to_i]["outbound"]["flights"]["departs_at".to_i]["departs_at"] %><br>
+        Arrives: <%= flight["itineraries"]["outbound".to_i]["outbound"]["flights"]["arrives_at".to_i]["arrives_at"] %><br>
+        Fare Price: $<%= flight["fare"]["total_price"] %><br><br>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
